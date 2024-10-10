@@ -21,7 +21,7 @@
                                 <th>Nombre</th>
                                 <th>Capacidad</th>
                                 
-                                @role('super-admin')
+                                @role('decano')
                                     <th>Action</th>
                                 @endrole
                             </tr>
@@ -34,7 +34,7 @@
                                     <td>{{ $cont }}</td>
                                     <td>{{ $aula->nombre }}</td>
                                     <td>{{ $aula->capacidad }}</td>
-                                    @role('super-admin')
+                                    @role('decano')
                                         <td>
                                           
                                             <a href="{{route('aulas.edit', $aula->id)}}"  class="link-warning editIcon"><i

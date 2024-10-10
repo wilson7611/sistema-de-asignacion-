@@ -22,7 +22,7 @@
                                 <th>Nombre</th>
                                 <th>Email</th>
                                 <th>Rol</th>
-                                @role('super-admin')
+                                @role('decano')
                                     <th>Action</th>
                                 @endrole
                             </tr>
@@ -36,7 +36,7 @@
                                     <td>{{ $usuario->name }}</td>
                                     <td>{{ $usuario->email }}</td>
                                     <td>{{ $usuario->roles->implode('name', ', ') }}</td>
-                                    @role('super-admin')
+                                    @role('decano')
                                         <td>
                                          
                                             <a href="{{route('usuarios.edit', $usuario->id)}}"  class="link-warning editIcon"><i

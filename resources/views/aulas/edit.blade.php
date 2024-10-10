@@ -17,7 +17,7 @@
                   <input type="text" name="nombre" required class="form-control" value="{{ $aula->nombre }}">
                 </div>
                 <div class="form-group">
-                  <label for="email">Email</label>
+                  <label for="email">Capacidad</label>
                   <input type="number" name="capacidad" required class="form-control" value="{{ $aula->capacidad }}">
                 </div>
                <br>

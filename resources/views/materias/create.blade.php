@@ -12,40 +12,42 @@
     <div class="row g-3">
         <div class="col-xxl-12">
             <div>
+                <label for="firstName" class="form-label">Codigo</label>
+                <input type="text" name="codigo" class="form-control" id="firstName" placeholder="Introducir Codigo">
+            </div>
+        </div><!--end col-->
+        <div class="col-xxl-12">
+            <div>
                 <label for="firstName" class="form-label">Nombre Materia</label>
                 <input type="text" name="nombre" class="form-control" id="firstName" placeholder="Introducir Nombre">
             </div>
         </div><!--end col-->
-        <div class="col-xxl-12">
-            <div>
-                <label for="firstName" class="form-label">Codigo</label>
-                <input type="text" name="nombre" class="form-control" id="firstName" placeholder="Introducir Nombre">
-            </div>
-        </div><!--end col-->
+        
         
         <div class="col-xxl-12">
             <div>
                 <label for="emailInput" class="form-label">Semestre</label>
-                <input type="text" name="semestre" class="form-control" id="emailInput" placeholder="Introducir email">
-            </div>
-        </div><!--end col-->
-        <div class="col-xxl-12">
-            <div>
-                <label for="emailInput" class="form-label">cupo maximo</label>
-                <input type="text" name="cupos_maximos" class="form-control" id="emailInput" placeholder="Introducir email">
+                <input type="text" name="semestre" class="form-control" id="emailInput" placeholder="Introducir semestre">
             </div>
         </div><!--end col-->
         <div class="col-xxl-12">
             <div>
                 <label for="emailInput" class="form-label">cupo minimo</label>
-                <input type="text" name="cupos_minimos" class="form-control" id="emailInput" placeholder="Introducir email">
+                <input type="number" name="cupos_minimos" class="form-control" id="emailInput" placeholder="Introducir cupo minimo">
             </div>
         </div><!--end col-->
+        <div class="col-xxl-12">
+            <div>
+                <label for="emailInput" class="form-label">cupo maximo</label>
+                <input type="number" name="cupos_maximos" class="form-control" id="emailInput" placeholder="Introducir cupo maximo">
+            </div>
+        </div><!--end col-->
+        
 
         <div class="col-xxl-12">
             <div>
                 <label for="emailInput" class="form-label">Prerequisito</label>
-                <select name="prerequisito_id" id="">
+                <select name="prerequisito_id" id="" class="form-select">
                     @foreach ($materias as $materia)
                         
                     <option value="{{$materia->id}}">{{$materia->nombre}}</option>
@@ -54,16 +56,7 @@
             </div>
         </div><!--end col-->
 
-        <div class="col-xxl-12">
-            <div>
-                <label for="emailInput" class="form-label">estado</label>
-                <select name="estado" id="">
-                    @foreach ($materias as $materia)
-                    <option value="{{$materia->id}}">{{$materia->estado}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div><!--end col-->
+     
       
         <div class="col-lg-12">
             <div class="hstack gap-2 justify-content-end">

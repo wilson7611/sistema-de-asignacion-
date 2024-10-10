@@ -25,37 +25,61 @@ class MateriaController extends Controller
     // Método para crear un horario
     public function store(Request $request)
     {
-        //dd($request->all());
         $request->validate([
             'codigo' => 'required',
             'nombre' => 'required',
             'semestre' => 'required',
             'cupos_minimos' => 'required',
             'cupos_maximos' => 'required',
-            'estado' => 'nullable',
             'prerequisito_id' => 'required',
         ]);
-
+    
         // Obtener el docente autenticado
         $user = Auth::user();
         if (!$user->hasRole('decano')) {
             return back()->with('error', 'Solo los decanos pueden crear materia.');
         }
-
-            Materia::create([
-                'codigo' => $request->codigo,
-                'nombre' => $request->nombre,
-                'semestre' => $request->semestre, // Aquí usamos el ID del usuario autenticado
-                'cupos_minimos' => $request->cupos_minimos,
-                'cupos_maximos' => $request->cupos_maximos,
-                'prerequisito_id' => $request->prerequisito_id,
-            ]);
-        
-
-        return back()->with('success', 'Materia creados exitosamente.');
     
+        // Crear la materia con estado por defecto 'pendiente' si no se proporciona
+        Materia::create([
+            'codigo' => $request->codigo,
+            'nombre' => $request->nombre,
+            'semestre' => $request->semestre,
+            'cupos_minimos' => $request->cupos_minimos,
+            'cupos_maximos' => $request->cupos_maximos,
+            'prerequisito_id' => $request->prerequisito_id,
+            'estado' => 'pendiente', // Aquí asignas el valor por defecto directamente
+        ]);
+    
+        return back()->with('success', 'Materia creada exitosamente.');
+    }
+    
+    public function edit($id)
+    {
+        $materias = Materia::all();
+        $materia = Materia::findOrFail($id);
+        return view('materias.edit', compact('materia', 'materias'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id)
+    {
+        $materia = Materia::findOrFail($id);
+        $materia->update($request->all());
+        return redirect()->route('materias.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+    {
+        $materia = Materia::findOrFail($id);
+        $materia->delete();
+        return redirect()->route('materias.index');
+    }
     // Método para aprobar una materia
     public function aprobarMateria(Request $request)
     {

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Aula extends Model
 {
     use HasFactory;
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'capacidad'];
 
     public function horarios()
     {

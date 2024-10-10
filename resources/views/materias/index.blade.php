@@ -11,9 +11,7 @@
                     <a class="btn btn-light" href="" data-bs-toggle="modal" data-bs-target="#addUserModal">
                         <i class="bi-plus-circle me-2"></i>Agregar Nuevo Registro
                     </a>
-                    <a class="btn btn-light" href="{{route('materias.create')}}" >
-                        <i class="bi-plus-circle me-2"></i>nuevo Horario
-                    </a>
+                    
                 </div>
                 <div class="card-body">
                     <table id="model-datatables" class="table table-bordered nowrap table-striped align-middle"
@@ -26,7 +24,7 @@
                                 <th>Cupo Minimo</th>
                                 <th>Cupo Maximo</th>
                                 
-                                @role('super-admin')
+                                @role('decano')
                                     <th>Action</th>
                                 @endrole
                             </tr>
@@ -41,7 +39,7 @@
                                     <td>{{ $materia->semestre }}</td>
                                     <td>{{ $materia->cupos_minimos }}</td>
                                     <td>{{ $materia->cupos_maximos }}</td>
-                                    @role('super-admin')
+                                    @role('decano')
                                         <td>
                                           
                                             <a href="{{route('materias.edit', $materia->id)}}"  class="link-warning editIcon"><i
